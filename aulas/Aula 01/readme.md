@@ -1,4 +1,5 @@
 # Comandos git
+*Comandos básicos para fazer a utilização do Git*
 
 1. Clonar repositorio
 
@@ -6,7 +7,7 @@
     git clone <link_do_ repositorio>
 ```
 
-2.Adcionar arquivo ao git
+2. Adcionar arquivo ao git
 
 ```shell
     git add <.> "Adiciona todos os arquivos"
