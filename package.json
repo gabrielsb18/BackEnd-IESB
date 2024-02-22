@@ -1,0 +1,12 @@
+{
+  "name": "backend-iesb",
+  "version": "1.0.0",
+  "description": "Este repositório foi criado com o objetivo de armazenar e organizar os códigos desenvolvidos durante as aulas e atividades práticas da disciplina.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
