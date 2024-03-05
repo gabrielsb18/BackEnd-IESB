@@ -1,0 +1,103 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Testes da API REST",
+    "dateExported": "2024-03-05T00:17:05.544Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c7b88efb-95bf-4fdf-8f28-b6d4d3b39b42",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products/1",
+            "url": "https://dummyjson.com/products/101",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-03-05T00:15:36.408Z",
+            "modified": "2024-03-05T00:15:36.408Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "32e0680c-dff6-45fc-82ff-05aaab2391ea",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products/1",
+            "url": "https://dummyjson.com/products/101",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-05T00:15:51.813Z",
+            "modified": "2024-03-05T00:15:51.813Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Motorola Moto G2\",\n  \"descripton\": \"Do you want to take great photos to keep that special moment? The Moto G is here for that!\",\n  \"price\":\"200\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bcd2ce11-70b4-49b1-9034-ecf93490b5c4",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products/add",
+            "url": "https://dummyjson.com/products/add",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-05T00:16:02.437Z",
+            "modified": "2024-03-05T00:16:02.437Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"galaxy A10\",\n  \"description\": \"Execelente celular para tarefas básicas, como ligações e envio de mensagens\",\n  \"price\": 500\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6e859cfc-fd6f-4597-8e6d-39e5dc0c6750",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products/101",
+            "url": "https://dummyjson.com/products/101",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-03-05T00:16:12.781Z",
+            "modified": "2024-03-05T00:16:12.781Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d9ed4926-851c-4894-969e-fceee4d546c3",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products/1",
+            "url": "https://dummyjson.com/products/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-05T00:16:23.982Z",
+            "modified": "2024-03-05T00:16:23.982Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e1e53477-5363-4365-a7cb-41ee7242d8f9",
+            "colId": "65194293-8d4b-446a-b239-3d62c6c114e1",
+            "containerId": "",
+            "name": "https://dummyjson.com/products.",
+            "url": "https://dummyjson.com/products",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-05T00:16:33.607Z",
+            "modified": "2024-03-05T00:16:33.607Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
