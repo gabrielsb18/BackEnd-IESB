@@ -22,7 +22,7 @@ function buscarPeloId(req, res, next){
 
 function validarDados (req, res, next){
     const {nome, preco} = req.body;
-    if (nome && preco) {
+    if (nome && preco) {    
         next();
     } else {
         res.status(422).json({msg: "Nome e preco são obrigatórios"});
