@@ -1,0 +1,10 @@
+Document:
+Openapi: 3.0.0
+  title:
+  description:
+  
+info:
+servers:
+tags:
+paths:
+components:
