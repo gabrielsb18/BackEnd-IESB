@@ -1,58 +1,78 @@
-const readline = require('readline-sync');
-const controllador = require("./controllador")
+//CRIANCO CONEXÃO COM MONGODB
+//IMPORTAMOS NOSSA URL DE CONEXÃO DO ARQUIVO DOTENV
 
-function exibirMenu() {
-    console.log("AGENDA");
-    console.log("1 - Consultar contato");
-    console.log("2 - Incluir contato");
-    console.log("3 - Alterar contato");
-    console.log("4 - Remover contato");
-    console.log("5 - Sair");
-}
+require("dotenv").config();
+const mongoose = require("mongoose");
+const Produto = require("./modelo");
 
-async function escolherOpcao(opcao) {
-    switch(opcao) {
-        case '1': {
-            const nome = readline.question("Informe um nome: ");
-            const contato = await controllador.consultarContatos(nome)
-            console.log("Contato localizado.", contato)
-            break;
-        }
-        case '2': {
-            const nome = readline.question("Informe um nome");
-            const email = readline.question("Informe um email");
-            const telefone = readline.question("Informe um telefone");
-            const contato = await controllador.incluirContatos(nome, email, telefone)
-            console.log("Contato adicionado", contato);
-            break;
-        }
-        case '3': {
-            const nome = readline.question("Informe um nome");
-            const email = readline.question("Informe um email");
-            const telefone = readline.question("Informe um telefone");
-            const contato = await controllador.atualizarContatos(nome, email, telefone);
-            console.log("Contato atualizado", contato);
-            break;
-        }
-        case '4': {
-            const nome = readline.question("Informe um nome: ");
-            const contato = await controllador.removerContatos(nome);
-            console.log("Contato removido", contato)
-            break;
-        }
-        case '5': {
-            process.exit(0);
-        }
-        default: console.log("Opção inválida. Tente novamente.");
-    }
-}
+const url = process.env.MONGODB_URL;
 
 async function main() {
-    while(true) {
-        exibirMenu();
-        const opcao = readline.question("Entre com a opcao: ");
-        await escolherOpcao(opcao);
-    };
-};
+    try {
+        await mongoose.connect(url);
+        console.log("Deu certo");
+    } catch (err) {
+        console.log("Deu ruim !", err.message);
+    }
+
+    //CRIANDO PRODUTO
+
+    //   const produto = new Produto({
+    //     nome: "maçã",
+    //     preco: 12.0,
+    //     quantidade: 5,
+    //   });
+
+    //   await produto.save();
+
+    //ALTERANDO PRODUTO
+
+    //   const produto = await Produto.findOne({ nome: "maçã" });
+    //   produto.nome = "abacaxi";
+    //   produto.preco = 11.5;
+    //   produto.quantidade = 4;
+
+    //   await produto.save();
+
+    //OUTRA FORMA DE INSERIR PRODUTO
+    //  const produto = Produto.create({
+    //      nome: "uva",
+    //      preco: 31.5,
+    //      quantidade: 5,
+    // });
+    // console.log(produto._id);
+
+    //OUTRA FORMA DE INSERIR PRODUTO 2
+    try {  
+        const produtoNovo = await Produto.create({
+            nome: "     ", 
+            preco: -31.5, 
+            quantidade: 5
+        });
+        console.log(produtoNovo);
+      } catch (err) {
+        for (let key in err.errors) {
+            console.log(err.errors[key].message);
+        }
+      }
+
+    // //OUTRA FORMA DE ATUALIZAR PRODUTO
+    // const produtoAtualizado = Produto.findOneUdadte(
+    //     { nome: "maçã" },
+    //     { nome: "maca fugi", preco: 16.0, quantidade: 2 }
+    // );
+    // console.log(produtoAtualizado);
+
+    // //CONSULTAR PRODUTO
+    // const produtoConsultado = Produto.findOne({ nome: "uva" });
+    // console.log(produtoConsultado);
+
+    // //REMOVER PRODUTO
+    // const produtoRemovido = Produto.findOneAndDelete({ nome: "uva"});
+    // console.log(produtoRemovido);
+
+    //FECHANDO CONEXAÇÃO
+    await mongoose.disconnect();
+}
 
 main();

@@ -1,54 +1,15 @@
-const {conectarDb} = require("./database")
+const mongoose = require("mongoose");
 
+//TRIM = VALIDA ESPAÇO
+//REQUIRED = CAMPO OBRIGATORIO
+//DEFAULT = SE DEIXAR EM BRANCO VAI SER COLOCADO 0
+//MIN = O VALOR MINIMO É 0
+//AO INSERIR O REQUIRE TRUE EM UM ARRAY ([]), PODEMOS PASSAR UMA MENSAGEM PARA SER EXEBIDA NA APLICAÇÃO
 
-class Contato {
-    constructor(nome, email, telefone){
-        this.nome = nome;
-        this.emai = email;
-        this.telefone = telefone;
-        this.id = null;
-    }
-};
+const produtoSchema = new mongoose.Schema({
+    nome: {type:String, trim:true, uppercase:true, required:[true, 'Nome é Obrigatório'], minLenght: [3, "Nome deve ter no minimo 3 caracteres"], unique: [true, 'Produto já cadastrado']},
+    preco: {type:Number, required:[true, "Preço é obrigatorio"], min: [0, "Valor minimo do preço é ZERO"]},
+    quantidade: {type: Number, default: 0}
+});
 
-async function inserir(contato){
-    const {nome, email, telefone} = contato;
-    const db = await conectarDb();
-    const collection = db.collection("contatos");
-    const result = await collection.insertOne({nome, email, telefone});
-    contato.id = result.insertId;
-    return contato;
-};
-
-async function consultar(contato){
-    const {nome} = contato;
-    const db = await conectarDb();
-    const collection = db.collection('contatos');
-    const result = await collection.findOne({nome});
-    contato.id = result._id;
-    contato.email = result.email;
-    contato.telefone = result.telefone;
-    return contato;
-};
-
-async function alterar(contato){
-    const {id,nome, email, telefone} = contato;
-    const db = await conectarDb();
-    const collection = db.collection("contatos");
-    await collection.updateOne({_id: id},{$set: {nome, email, telefone}});
-    return contato;
-};
-
-async function deletar(contato){
-    const {id} = contato;
-    const db = await conectarDb();
-    const collection = db.collection("contatos");
-    await collection.deleteOne({_id: id});
-};
-
-module.exports = {
-    Contato,
-    inserir,
-    consultar,
-    alterar,
-    deletar
-};
+module.exports = mongoose.model('Produto', produtoSchema);
