@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+    title: API Loja Virtual
+    version: 0.1
+tags:
+    - produtos
+paths:
+    /produtos:
+        get:
+            tags:
+                - produtos
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ArrayOfProdutos"
+            security:
+                - JWTAuth: []        
+        post:
+            tags:
+                - produtos
+    /produtos/{id}:
+        get:
+            tags:
+                - produtos
+        put:
+            tags:
+                - produtos
+        delete:
+            tags:
+                - produtos
+components:
+    schemas:
+        ArrayOfProdutos:
+            type: array
+            items: 
+                $ref: "#/components/schemas/Produto"
+        Produto:
+            type: object
+            properties:
+                nome:
+                    type: string
+                preco:
+                    number: number
+    securitySchemes: 
+        JWTAuth:
+            type: apiKey
+            in: header
+            name: Authorization
